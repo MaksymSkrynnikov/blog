@@ -1,1 +1,17 @@
+/home/skrynnikov_m/Projects/blog/src/main/java/com/fancy/blog/dao/impl/AuthorDaoImpl.java
+/home/skrynnikov_m/Projects/blog/src/main/java/com/fancy/blog/dao/AuthorDao.java
+/home/skrynnikov_m/Projects/blog/src/main/java/com/fancy/blog/models/entity/Comment.java
+/home/skrynnikov_m/Projects/blog/src/main/java/com/fancy/blog/service/AuthorService.java
 /home/skrynnikov_m/Projects/blog/src/main/java/com/fancy/blog/BlogApplication.java
+/home/skrynnikov_m/Projects/blog/src/main/java/com/fancy/blog/dao/impl/CommentDaoImpl.java
+/home/skrynnikov_m/Projects/blog/src/main/java/com/fancy/blog/models/entity/Blog.java
+/home/skrynnikov_m/Projects/blog/src/main/java/com/fancy/blog/service/BlogService.java
+/home/skrynnikov_m/Projects/blog/src/main/java/com/fancy/blog/models/vo/CommentVO.java
+/home/skrynnikov_m/Projects/blog/src/main/java/com/fancy/blog/dao/impl/BlogDaoImpl.java
+/home/skrynnikov_m/Projects/blog/src/main/java/com/fancy/blog/service/CommentService.java
+/home/skrynnikov_m/Projects/blog/src/main/java/com/fancy/blog/controller/WelcomeController.java
+/home/skrynnikov_m/Projects/blog/src/main/java/com/fancy/blog/dao/CommentDao.java
+/home/skrynnikov_m/Projects/blog/src/main/java/com/fancy/blog/service/impl/BlogServiceImpl.java
+/home/skrynnikov_m/Projects/blog/src/main/java/com/fancy/blog/dao/BlogDao.java
+/home/skrynnikov_m/Projects/blog/src/main/java/com/fancy/blog/controller/BlogController.java
+/home/skrynnikov_m/Projects/blog/src/main/java/com/fancy/blog/models/entity/Author.java
