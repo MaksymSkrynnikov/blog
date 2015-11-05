@@ -1,9 +1,12 @@
 package com.fancy.blog.controller;
 
+import com.fancy.blog.models.vo.CommentVO;
 import com.fancy.blog.service.BlogService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -27,9 +30,9 @@ public class BlogController {
     return "blog";
   }
 
-  @RequestMapping(value = "/{blogUuid}/comment/{comment}", method = RequestMethod.POST)
-  public String addComment(Map<String, Object> model, @PathVariable String blogUuid, @PathVariable String comment) {
-    System.out.println(comment);
+  @RequestMapping(value = "/{blogUuid}/comment/", method = RequestMethod.POST, consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+  public String addComment(@PathVariable String blogUuid, @RequestBody CommentVO comment) {
+    System.out.println(blogUuid + " " + comment);
     return "blog";
   }
 }
