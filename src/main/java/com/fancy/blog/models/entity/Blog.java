@@ -7,7 +7,9 @@ import org.hibernate.annotations.GenericGenerator;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Objects;
 
 /**
  * blog
@@ -36,7 +38,7 @@ public class Blog implements Serializable {
   @ManyToOne(fetch = FetchType.EAGER, targetEntity = Author.class)
   private Author        author;
 
-  @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL/*, mappedBy = "blog", targetEntity = Comment.class*/)
+  @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
   @Fetch(FetchMode.SUBSELECT)
   private List<Comment> comments;
 
@@ -86,6 +88,13 @@ public class Blog implements Serializable {
 
   public void setComments(List<Comment> comments) {
     this.comments = comments;
+  }
+
+  public void addComment(Comment comment) {
+    if (Objects.isNull(comments)) {
+      comments = new LinkedList<>();
+    }
+    comments.add(comment);
   }
 
   @Override

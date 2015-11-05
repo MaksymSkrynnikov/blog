@@ -2,6 +2,8 @@ package com.fancy.blog.dao;
 
 import com.fancy.blog.models.entity.Author;
 
+import java.util.List;
+
 /**
  * blog
  * Skrynnikov.M
@@ -9,9 +11,11 @@ import com.fancy.blog.models.entity.Author;
  */
 public interface AuthorDao {
 
+  List<Author> getAllAuthors();
+
   void addNewAuthor(Author author);
 
-  Author getAuthor(String authorUuid);
+  Author getAuthorByUuid(String authorUuid);
 
   Author getAuthorByLogin(String authorLogin);
 

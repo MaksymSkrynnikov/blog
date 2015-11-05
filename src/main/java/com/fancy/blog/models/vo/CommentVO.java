@@ -3,6 +3,7 @@ package com.fancy.blog.models.vo;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import java.io.Serializable;
+import java.util.Date;
 
 /**
  * blog
@@ -12,9 +13,18 @@ import java.io.Serializable;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class CommentVO implements Serializable {
 
+  private String ownerName;
+
   private String text;
 
-  public CommentVO(){
+  private Date creationMoment;
+
+  public String getOwnerName() {
+    return ownerName;
+  }
+
+  public void setOwnerName(String ownerName) {
+    this.ownerName = ownerName;
   }
 
   public String getText() {
@@ -25,26 +35,20 @@ public class CommentVO implements Serializable {
     this.text = text;
   }
 
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) return true;
-    if (!(o instanceof CommentVO)) return false;
-
-    CommentVO commentVO = (CommentVO) o;
-
-    return !(text != null ? !text.equals(commentVO.text) : commentVO.text != null);
-
+  public Date getCreationMoment() {
+    return creationMoment;
   }
 
-  @Override
-  public int hashCode() {
-    return text != null ? text.hashCode() : 0;
+  public void setCreationMoment(Date creationMoment) {
+    this.creationMoment = creationMoment;
   }
 
   @Override
   public String toString() {
     return "CommentVO{" +
-           "text='" + text + '\'' +
+           "ownerName='" + ownerName + '\'' +
+           ", text='" + text + '\'' +
+           ", creationMoment=" + creationMoment +
            '}';
   }
 }

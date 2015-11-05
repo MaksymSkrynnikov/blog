@@ -5,6 +5,7 @@ import com.fancy.blog.models.entity.Author;
 import com.fancy.blog.models.entity.Blog;
 import com.fancy.blog.models.entity.Comment;
 import com.fancy.blog.service.BlogService;
+import com.fancy.blog.service.BusinessService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -25,6 +26,9 @@ public class WelcomeController {
   private BlogService blogService;
 
   @Autowired
+  private BusinessService businessService;
+
+  @Autowired
   private AuthorDao authorDao;
 
 
@@ -38,8 +42,7 @@ public class WelcomeController {
 
   @RequestMapping("/welcome")
   public String blogs(Map<String, Object> model) {
-    List<Blog> blogs = blogService.getAllBlogs();
-    model.put("blogs", blogs);
+    model.put("blogs", businessService.getAllBlogs());
     return "welcome";
   }
 
@@ -48,6 +51,7 @@ public class WelcomeController {
     Comment comment = new Comment();
     comment.setCreationMoment(new Date());
     comment.setText("Bad comment");
+    comment.setOwnerName("Stranger");
     Blog blog = new Blog();
     blog.setCreationMoment(new Date());
     blog.setText("text");

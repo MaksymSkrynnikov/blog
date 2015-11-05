@@ -1,12 +1,11 @@
 package com.fancy.blog.controller;
 
 import com.fancy.blog.models.vo.CommentVO;
-import com.fancy.blog.service.BlogService;
+import com.fancy.blog.service.BusinessService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -22,17 +21,19 @@ import java.util.Map;
 public class BlogController {
 
   @Autowired
-  private BlogService blogService;
+  private BusinessService businessService;
 
   @RequestMapping("/{blogUuid}")
   public String getBlog(Map<String, Object> model, @PathVariable String blogUuid) {
-    model.put("blog", blogService.getBlog(blogUuid));
+    model.put("blog", businessService.getBlog(blogUuid));
     return "blog";
   }
 
-  @RequestMapping(value = "/{blogUuid}/comment/", method = RequestMethod.POST, consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
-  public String addComment(@PathVariable String blogUuid, @RequestBody CommentVO comment) {
-    System.out.println(blogUuid + " " + comment);
-    return "blog";
+  @RequestMapping(value = "/{blogUuid}/comment/", method = RequestMethod.POST)
+  public String addComment(@PathVariable String blogUuid, @ModelAttribute("comment") CommentVO comment) {
+    businessService.addComment(blogUuid, comment);
+    return "redirect:/blog/" + blogUuid;
   }
+
+
 }

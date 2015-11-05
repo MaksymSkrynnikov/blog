@@ -13,12 +13,14 @@ import java.util.Date;
  */
 @Entity
 @Table(name = "comment")
-public class Comment implements Comparable<Comment>, Serializable {
+public class Comment implements Serializable {
 
   @Id @Column(name = "id")
   @GeneratedValue(generator = "system-uuid")
   @GenericGenerator(name = "system-uuid", strategy = "uuid")
   private String id;
+  @Column(name = "owner_name")
+  private String ownerName;
   @Column(name = "text")
   private String text;
   @Column(name = "creation_date")
@@ -32,6 +34,14 @@ public class Comment implements Comparable<Comment>, Serializable {
 
   public void setId(String id) {
     this.id = id;
+  }
+
+  public String getOwnerName() {
+    return ownerName;
+  }
+
+  public void setOwnerName(String ownerName) {
+    this.ownerName = ownerName;
   }
 
   public String getText() {
@@ -50,9 +60,12 @@ public class Comment implements Comparable<Comment>, Serializable {
     this.creationMoment = creationMoment;
   }
 
-  @Override
-  public int compareTo(Comment that) {
-    return creationMoment.compareTo(that.getCreationMoment());
+  public Blog getBlog() {
+    return blog;
+  }
+
+  public void setBlog(Blog blog) {
+    this.blog = blog;
   }
 
   @Override
@@ -63,16 +76,21 @@ public class Comment implements Comparable<Comment>, Serializable {
     Comment comment = (Comment) o;
 
     if (id != null ? !id.equals(comment.id) : comment.id != null) return false;
+    if (ownerName != null ? !ownerName.equals(comment.ownerName) : comment.ownerName != null) return false;
     if (text != null ? !text.equals(comment.text) : comment.text != null) return false;
-    return !(creationMoment != null ? !creationMoment.equals(comment.creationMoment) : comment.creationMoment != null);
+    if (creationMoment != null ? !creationMoment.equals(comment.creationMoment) : comment.creationMoment != null)
+      return false;
+    return !(blog != null ? !blog.equals(comment.blog) : comment.blog != null);
 
   }
 
   @Override
   public int hashCode() {
     int result = id != null ? id.hashCode() : 0;
+    result = 31 * result + (ownerName != null ? ownerName.hashCode() : 0);
     result = 31 * result + (text != null ? text.hashCode() : 0);
     result = 31 * result + (creationMoment != null ? creationMoment.hashCode() : 0);
+    result = 31 * result + (blog != null ? blog.hashCode() : 0);
     return result;
   }
 
@@ -80,8 +98,10 @@ public class Comment implements Comparable<Comment>, Serializable {
   public String toString() {
     return "Comment{" +
            "id='" + id + '\'' +
+           ", ownerName='" + ownerName + '\'' +
            ", text='" + text + '\'' +
            ", creationMoment=" + creationMoment +
+           ", blog=" + blog +
            '}';
   }
 }

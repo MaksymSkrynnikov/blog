@@ -9,7 +9,8 @@
     <#list blogs as blog>
         <a href="<@spring.url '/blog/'/>${blog.id}">Blog: ${blog.title}</a>
         <div>
-            <strong>Author: ${blog.author.name}</strong>
+            <strong>Author: ${blog.authorName}</strong>
+            <strong>Registered: ${blog.authorRegistrationMoment}</strong>
             <strong>Creation date: ${blog.creationMoment}</strong>
             <p>Comments: ${blog.comments?size}</p>
         </div>

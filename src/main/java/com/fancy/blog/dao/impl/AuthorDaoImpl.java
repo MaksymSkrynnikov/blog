@@ -8,6 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
+import java.util.List;
 
 /**
  * blog
@@ -22,12 +23,19 @@ public class AuthorDaoImpl implements AuthorDao {
   private EntityManager entityManager;
 
   @Override
+  @SuppressWarnings("unchecked")
+  public List<Author> getAllAuthors() {
+    Query query = entityManager.createQuery("select a from " + Author.class.getSimpleName() + " a");
+    return query.getResultList();
+  }
+
+  @Override
   public void addNewAuthor(Author author) {
     entityManager.persist(author);
   }
 
   @Override
-  public Author getAuthor(String authorUuid) {
+  public Author getAuthorByUuid(String authorUuid) {
     return entityManager.find(Author.class, authorUuid);
   }
 
