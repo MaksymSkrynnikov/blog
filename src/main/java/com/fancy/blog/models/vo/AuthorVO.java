@@ -18,7 +18,6 @@ public class AuthorVO {
   private String login;
   private Date   registrationDate;
   private List<BlogVO> blogs;
-
   public String getId() {
     return id;
   }

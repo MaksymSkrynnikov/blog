@@ -3,6 +3,7 @@ package com.fancy.blog.models.entity;
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
 import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -33,6 +34,7 @@ public class Blog implements Serializable {
   private String        title;
 
   @Column(name = "text")
+  @Type(type = "text")
   private String        text;
 
   @ManyToOne(fetch = FetchType.EAGER, targetEntity = Author.class)

@@ -34,6 +34,4 @@ public class BlogController {
     businessService.addComment(blogUuid, comment);
     return "redirect:/blog/" + blogUuid;
   }
-
-
 }

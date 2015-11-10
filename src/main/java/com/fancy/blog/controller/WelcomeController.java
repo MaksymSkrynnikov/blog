@@ -50,18 +50,19 @@ public class WelcomeController {
 
     Comment comment = new Comment();
     comment.setCreationMoment(new Date());
-    comment.setText("Bad comment");
+    comment.setText("Really helpful technology, I'm going to use it on my next project");
     comment.setOwnerName("Stranger");
     Blog blog = new Blog();
     blog.setCreationMoment(new Date());
-    blog.setText("text");
-    blog.setTitle("title");
+    blog.setText("HATEOAS, an abbreviation for Hypermedia as the Engine of Application State, is a constraint of the REST application architecture that distinguishes it from most other network application architectures. The principle is that a client interacts with a network application entirely through hypermedia provided dynamically by application servers. A REST client needs no prior knowledge about how to interact with any particular application or server beyond a generic understanding of hypermedia. By contrast, in some service-oriented architectures (SOA), clients and servers interact through a fixed interface shared through documentation or an interface description language (IDL). " +
+                        "The HATEOAS constraint decouples client and server in a way that allows the server functionality to evolve independently.");
+    blog.setTitle("HATEOAS");
     blog.setComments(new LinkedList<>(Collections.singleton(comment)));
     Author author = new Author();
-    author.setName("Some name");
+    author.setName("John Doe");
     author.setRegistrationDate(new Date());
+    author.setLogin("john@doe.com");
     authorDao.addNewAuthor(author);
-    author.setLogin("login");
     blog.setAuthor(author);
     blogService.addNewBlog(blog);
   }
